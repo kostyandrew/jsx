@@ -1,0 +1,35 @@
+{
+  "name": "testy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "bluebird": "^3.4.0",
+    "css-loader": "^0.23.1",
+    "dotenv": "^2.0.0",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^1.0.0",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.0",
+    "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^1.6.3",
+    "imports-loader": "^0.6.5",
+    "lodash": "^4.5.1",
+    "moment": "^2.11.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack-dev-server --hot --inline --watch"
+  }
+}
