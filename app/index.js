@@ -1,10 +1,34 @@
-import Eagle from './eagle/index.js';
+import Eagle from './eagle';
+
+let lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ligula ipsum, congue ac dui vitae, ultricies
+vulputate turpis. Pellentesque ornare porta sapien eu posuere. Etiam tincidunt vulputate feugiat. Cras
+commodo gravida venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+commodo condimentum leo, quis blandit nisi tincidunt eget. Duis ac risus a mi volutpat pulvinar id vitae
+dui. Sed lobortis magna eget enim elementum lobortis. Donec a luctus nulla. Sed non dui vitae ante molestie
+elementum a non est. In hac habitasse platea dictumst. Sed vehicula metus mauris, ac tristique lectus mattis
+eget. Sed ligula libero, lobortis non mattis eget, tristique eget magna. Donec egestas sollicitudin nulla
+nec eleifend.`;
+
+
+class Lipsum extends Eagle.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <b>Hello, {this.props.name}</b>
+                <br />
+                {this.props.children}
+            </div>
+        );
+    }
+}
 
 Eagle.render(
-    document.getElementsByTagName('body')[0],
-    (<h1 className="header">
-        <b>dfa</b>
-        <br />
-        <i>fs</i>
-    </h1>)
+    (<div>
+        <h1 style="color:red">Hello, World!</h1>
+        <Lipsum name="Vova">{lipsum}</Lipsum>
+    </div>),
+    document.getElementsByTagName('body')[0]
 );
