@@ -13,11 +13,23 @@ nec eleifend.`;
 class Lipsum extends Eagle.Component {
     constructor(props) {
         super(props);
+
+        this.state.name = this.props.name;
+
+        this.state.date = new Date();
+
+        window.setInterval(() => {
+            // todo: find better way
+            this.state = Object.assign(this.state, {date: new Date()});
+        }, 1000);
     }
+
     render() {
         return (
             <div>
                 <b>Hello, {this.props.name}</b>
+                <br />
+                {this.state.date.toLocaleString()}
                 <br />
                 {this.props.children}
             </div>

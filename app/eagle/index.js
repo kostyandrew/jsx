@@ -31,7 +31,7 @@ export function createElement(object, props, ...child) {
     } else if (typeof object === 'function') {
         props.children = child;
         element = new object(props);
-        element = element.render();
+        element = element.mount();
     }
     return element;
 }
