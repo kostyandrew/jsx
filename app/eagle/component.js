@@ -2,13 +2,11 @@ export default class Component {
     constructor(props) {
         this.props = props;
         this.state = {};
+    }
 
-        return new Proxy(this, {
-            set: function (obj) {
-                obj.replace();
-                return true;
-            }
-        });
+    setState(value) {
+        this.state = Object.assign({}, this.state, value);
+        this.replace();
     }
 
     mount() {

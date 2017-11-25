@@ -1,4 +1,4 @@
-import Eagle from './eagle';
+import Eagle, { Component } from './eagle';
 
 let lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ligula ipsum, congue ac dui vitae, ultricies
 vulputate turpis. Pellentesque ornare porta sapien eu posuere. Etiam tincidunt vulputate feugiat. Cras
@@ -10,7 +10,7 @@ eget. Sed ligula libero, lobortis non mattis eget, tristique eget magna. Donec e
 nec eleifend.`;
 
 
-class Lipsum extends Eagle.Component {
+class Lipsum extends Component {
     constructor(props) {
         super(props);
 
@@ -19,8 +19,7 @@ class Lipsum extends Eagle.Component {
         this.state.date = new Date();
 
         window.setInterval(() => {
-            // todo: find better way
-            this.state = Object.assign(this.state, {date: new Date()});
+            this.setState({ date: new Date() });
         }, 1000);
     }
 
@@ -28,19 +27,47 @@ class Lipsum extends Eagle.Component {
         return (
             <div>
                 <b>Hello, {this.props.name}</b>
-                <br />
+                <br/>
                 {this.state.date.toLocaleString()}
-                <br />
+                <br/>
                 {this.props.children}
             </div>
         );
     }
 }
 
+class State extends Component {
+    constructor(props) {
+        super(props);
+        this.state.counter = this.props.start;
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={() => {
+                    this.setState({ counter: this.state.counter - 1 })
+                }}>
+                    -
+                </button>
+                <button onClick={() => {
+                    this.setState({ counter: this.state.counter + 1 })
+                }}>
+                    +
+                </button>
+                counter: {this.state.counter}
+            </div>
+        )
+    }
+}
+
 Eagle.render(
-    (<div>
-        <h1 style="color:red">Hello, World!</h1>
-        <Lipsum name="Vova">{lipsum}</Lipsum>
-    </div>),
+    (
+        <div>
+            <h1 style="color:red">Hello, World!</h1>
+            <Lipsum name="Vova">{lipsum}</Lipsum>
+            <State start={45}/>
+        </div>
+    ),
     document.getElementsByTagName('body')[0]
 );
